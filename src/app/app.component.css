@@ -1,0 +1,25 @@
+.layout{
+  position: fixed;
+  top: 0px;
+  margin: auto;
+}
+
+.contenedor{
+  position: absolute;
+  width: 411px;
+  height: 800px;
+  margin: auto;
+  top: 55px;
+}
+
+.espacioToolbar {
+  flex: 1 1 auto;
+}
+
+.sidenav{
+  width: 200px;
+}
+
+.contenidoSideNav{
+  margin: 10px;
+}
