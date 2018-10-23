@@ -6,3 +6,6 @@ $barber-app-accent: mat-palette($mat-green, A400);
 $barber-app-warn: mat-palette($mat-red, 700);
 
 $barber-theme: mat-dark-theme($barber-app-primary, $barber-app-accent, $barber-app-warn);
+
+
+@include angular-material-theme($barber-theme);
