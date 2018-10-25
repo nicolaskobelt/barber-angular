@@ -1,0 +1,35 @@
+<div class="formNewUser">
+  <mat-form-field color="accent">
+    <input matInput placeholder="Nombre" required>
+  </mat-form-field>
+
+  <mat-form-field color="accent">
+    <input matInput placeholder="Apellido" required>
+  </mat-form-field>
+
+  <mat-form-field color="accent">
+    <input matInput placeholder="Email" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field color="accent">
+    <input matInput placeholder="Telefono">
+  </mat-form-field>
+
+  <mat-form-field color="accent">
+    <mat-select placeholder="Cargo" required>
+      <mat-option *ngFor="let food of foods" [value]="food.value">
+        {{food.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field color="accent">
+    <input matInput placeholder="Contraseña" [type]="hide ? 'password' : 'text'">
+    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+  </mat-form-field>
+
+</div>
+<div class="botonForm">
+<button mat-flat-button color="accent">Submit</button>
+</div>
