@@ -18,8 +18,8 @@
 
   <mat-form-field color="accent">
     <mat-select placeholder="Cargo" required>
-      <mat-option *ngFor="let food of foods" [value]="food.value">
-        {{food.viewValue}}
+      <mat-option *ngFor="let role of roles" [value]="role.value">
+        {{role.viewValue}}
       </mat-option>
     </mat-select>
   </mat-form-field>
