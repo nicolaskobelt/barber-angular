@@ -11,12 +11,15 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { HttpClientModule } from '@angular/common/http';
+import {MatTableModule} from '@angular/material/table';
 
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ProfilesComponent } from './profiles/profiles.component';
 import { NewUserComponent } from './new-user/new-user.component';
+import { ShowUsersComponent } from './show-users/show-users.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,7 @@ import { NewUserComponent } from './new-user/new-user.component';
     LayoutComponent,
     ProfilesComponent,
     NewUserComponent,
+    ShowUsersComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +35,7 @@ import { NewUserComponent } from './new-user/new-user.component';
     AppRoutingModule,
     MatToolbarModule,
     MatButtonModule,
+    HttpClientModule,
     MatCheckboxModule,
     MatSidenavModule,
     MatIconModule,
@@ -40,7 +45,8 @@ import { NewUserComponent } from './new-user/new-user.component';
     MatListModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, Validators, FormGroup} from '@angular/forms';
+
 
 export interface Role {
   value: string;
@@ -13,6 +14,8 @@ export interface Role {
 })
 
 export class NewUserComponent implements OnInit {
+
+  nombre: string;
 
   constructor() { }
   hide = true;
@@ -33,5 +36,6 @@ export class NewUserComponent implements OnInit {
 
   ngOnInit() {
   }
+
 
 }
