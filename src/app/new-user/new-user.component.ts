@@ -1,9 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, Validators, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { DataService } from '../data.service';
 
 
 export interface Role {
-  value: string;
+  value: number;
+  viewValue: string;
+}
+export interface Barbershop {
+  value: number;
   viewValue: string;
 }
 
@@ -15,27 +20,33 @@ export interface Role {
 
 export class NewUserComponent implements OnInit {
 
-  nombre: string;
+  constructor(
+    private dataService: DataService,
+  ) { }
 
-  constructor() { }
   hide = true;
-  email = new FormControl('', [Validators.required, Validators.email]);
 
   roles: Role[] = [
-    {value: 'ADM', viewValue: 'Adiministrador'},
-    {value: 'BAR', viewValue: 'Barbero'},
-    {value: 'REC', viewValue: 'Recepcionista'},
-    {value: 'CLI', viewValue: 'Cliente'}
+    {value: 1, viewValue: 'Adiministrador'},
+    {value: 2, viewValue: 'Barbero'},
+    {value: 3, viewValue: 'Recepcionista'},
+    {value: 4, viewValue: 'Cliente'}
   ];
 
-  getErrorMessage() {
-    return this.email.hasError('requerido') ? 'Tenes que entrar un email valido' :
-      this.email.hasError('email') ? 'Email no valido' :
-        '';
-  }
+  barbershops: Barbershop[] = [
+    {value: 1, viewValue: 'Centro'}
+  ];
+
+  user: any = {};
 
   ngOnInit() {
+    this.onSubmit();
   }
 
-
+  onSubmit() {
+      console.log(this.user);
+      this.dataService.addUser(this.user)
+        .subscribe(user =>
+          this.user.push(this.user));
+    }
 }

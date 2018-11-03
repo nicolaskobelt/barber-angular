@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -23,9 +22,7 @@ export class DataService {
     return this.http.get(this.barberUsersUrl);
   }
 
-  // addUser() {
-  //   return this.http.post<User>(this.barberUsersUrl, User, httpOptions);
-  // }
-
-
+  addUser (user) {
+    return this.http.post(this.barberUsersUrl, user, httpOptions);
+  }
 }

@@ -1,25 +1,32 @@
-<div class="formNewUser" >
+<div class="formNewUser">
   <mat-form-field color="accent">
-    <input matInput placeholder="Nombre" required>
+    <input matInput placeholder="Nombre" [(ngModel)]="user.first_name" required>
   </mat-form-field>
 
   <mat-form-field color="accent">
-    <input matInput placeholder="Apellido" required>
+    <input matInput placeholder="Apellido" [(ngModel)]="user.last_name" required>
   </mat-form-field>
 
   <mat-form-field color="accent">
-    <input matInput placeholder="Email" [formControl]="email" required>
-    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    <input matInput placeholder="email" [(ngModel)]="user.email" required>
   </mat-form-field>
 
   <mat-form-field color="accent">
-    <input matInput placeholder="Telefono">
+    <input matInput placeholder="Telefono" [(ngModel)]="user.cell_phone">
   </mat-form-field>
 
   <mat-form-field color="accent">
-    <mat-select placeholder="Cargo" required>
+    <mat-select placeholder="Cargo" [(ngModel)]="user.role_id" required>
       <mat-option *ngFor="let role of roles" [value]="role.value">
         {{role.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field color="accent">
+    <mat-select placeholder="Barberia" [(ngModel)]="user.barbershop_id" required>
+      <mat-option *ngFor="let barbershop of barbershops" [value]="barbershop.value">
+        {{barbershop.viewValue}}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -28,8 +35,7 @@
     <input matInput placeholder="Contraseña" [type]="hide ? 'password' : 'text'">
     <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
   </mat-form-field>
-
 </div>
 <div class="botonForm">
-<button mat-flat-button color="accent" type="submit" onclick="onSubmit()">Submit</button>
+<button mat-flat-button color="accent" (click)="onSubmit()">Submit</button>
 </div>
