@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 
+
 @Component({
   selector: 'app-show-users',
   templateUrl: './show-users.component.html',
@@ -14,6 +15,9 @@ export class ShowUsersComponent implements OnInit {
   ) {}
 
   users: Object;
+
+  displayedColumns: string[] = ['id', 'first_name', 'last_name', 'cell_phone'];
+  dataSource = this.users;
 
 
   ngOnInit() {
