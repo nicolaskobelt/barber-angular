@@ -12,8 +12,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
-import {MatTableModule} from '@angular/material/table';
-import {MatCardModule} from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -21,6 +23,8 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { ProfilesComponent } from './profiles/profiles.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { ShowUsersComponent } from './show-users/show-users.component';
+import { NewTurnComponent } from './new-turn/new-turn.component';
+import { PlanningComponent } from './planning/planning.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,8 @@ import { ShowUsersComponent } from './show-users/show-users.component';
     ProfilesComponent,
     NewUserComponent,
     ShowUsersComponent,
+    NewTurnComponent,
+    PlanningComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +55,9 @@ import { ShowUsersComponent } from './show-users/show-users.component';
     MatSelectModule,
     MatTableModule,
     FormsModule,
-    MatCardModule
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

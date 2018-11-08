@@ -1,0 +1,40 @@
+<div class="newTurnForm">
+
+  <mat-form-field color="accent">
+    <input matInput [matDatepicker]="picker" placeholder="Elegir fecha" [(ngModel)]="turn.val">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field color="accent">
+    <mat-select placeholder="Barberia" [(ngModel)]="turn.barbershop_id" required>
+      <mat-option *ngFor="let barbershop of barbershops" [value]="barbershop.value">
+        {{barbershop.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field color="accent">
+    <mat-select placeholder="Tipo de corte" [(ngModel)]="turn.turn_type_id" required>
+      <mat-option *ngFor="let turn_type of turn_types" [value]="turn_type.value">
+        {{turn_type.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field color="accent">
+    <mat-select placeholder="Barbero" [(ngModel)]="turn.chair_id" required>
+      <mat-option *ngFor="let barber of barbers" [value]="barber.value">
+        {{barber.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field color="accent">
+    <input matInput type="number" placeholder="Nombre" [(ngModel)]="turn.user_id" required>
+  </mat-form-field>
+
+</div>
+<div class="botonForm">
+  <button mat-flat-button color="accent" (click)="onSubmit()">Hagale!</button>
+</div>

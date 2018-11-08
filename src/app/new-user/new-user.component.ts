@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { DataService } from '../data.service';
+// import { MatSnackBar } from '@angular/material';
 
 
 export interface Role {
@@ -21,6 +22,7 @@ export interface Barbershop {
 export class NewUserComponent implements OnInit {
 
   constructor(
+    //public snackBar: MatSnackBar,
     private dataService: DataService,
   ) { }
 
@@ -34,7 +36,8 @@ export class NewUserComponent implements OnInit {
   ];
 
   barbershops: Barbershop[] = [
-    {value: 1, viewValue: 'Centro'}
+    {value: 1, viewValue: 'Centro'},
+    {value: 2, viewValue: 'Guemes'}
   ];
 
   user: any = {};
@@ -43,10 +46,18 @@ export class NewUserComponent implements OnInit {
     this.onSubmit();
   }
 
+  contrasena() {
+    return true;
+  }
+
   onSubmit() {
       console.log(this.user);
       this.dataService.addUser(this.user)
         .subscribe(user =>
           this.user.push(this.user));
+
+    //   this.snackBar.open('Usuario Creado!', this.user.fist_name, {
+    //     duration: 2000,
+    // });
     }
 }

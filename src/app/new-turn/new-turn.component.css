@@ -1,16 +1,12 @@
-.formNewUser {
+.newTurnForm {
   display: flex;
   flex-direction: column;
   padding: 7%;
 }
-
-.formNewUser > * {
+.newTurnForm > * {
   width: 100%;
 }
-
 .botonForm{
   text-align: center;
   bottom: 10px;
 }
-
-

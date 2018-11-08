@@ -16,10 +16,6 @@ export class ShowUsersComponent implements OnInit {
 
   users: Object;
 
-  displayedColumns: string[] = ['id', 'first_name', 'last_name', 'cell_phone'];
-  dataSource = this.users;
-
-
   ngOnInit() {
     this.allUsers();
   }
