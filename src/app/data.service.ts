@@ -14,6 +14,7 @@ export class DataService {
 
   private userURL = 'http://localhost:3000/api/users';
   private turnURL = 'http://localhost:3000/api/turns';
+  private turnListURL = 'http://localhost:3000/api/turns?filter[order]=val%20ASC';
 
   constructor(
     private http: HttpClient
@@ -29,5 +30,9 @@ export class DataService {
 
   addTurn(turn) {
     return this.http.post(this.turnURL, turn, httpOptions);
+  }
+
+  getTurns() {
+    return this.http.get(this.turnListURL);
   }
 }

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 import { DataService } from '../data.service';
-// import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 
 
 export interface Role {
@@ -22,7 +22,7 @@ export interface Barbershop {
 export class NewUserComponent implements OnInit {
 
   constructor(
-    //public snackBar: MatSnackBar,
+    public snackBar: MatSnackBar,
     private dataService: DataService,
   ) { }
 
@@ -42,22 +42,24 @@ export class NewUserComponent implements OnInit {
 
   user: any = {};
 
-  ngOnInit() {
-    this.onSubmit();
-  }
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
 
-  contrasena() {
-    return true;
+  ngOnInit() {
   }
 
   onSubmit() {
-      console.log(this.user);
-      this.dataService.addUser(this.user)
-        .subscribe(user =>
-          this.user.push(this.user));
+    this.dataService.addUser(this.user)
+      .subscribe(user => {
+      });
+    this.abrete();
+    }
 
-    //   this.snackBar.open('Usuario Creado!', this.user.fist_name, {
-    //     duration: 2000,
-    // });
+    abrete() {
+      this.snackBar.open('Usuario Creado!', this.user.fist_name, {
+        duration: 5000,
+      });
     }
 }

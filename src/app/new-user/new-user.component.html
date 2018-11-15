@@ -8,7 +8,13 @@
   </mat-form-field>
 
   <mat-form-field color="accent">
-    <input matInput placeholder="Email" [(ngModel)]="user.email" required>
+    <input matInput placeholder="Email" [formControl]="emailFormControl" [(ngModel)]="user.email">
+    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      Por favor, un mail como la gente
+    </mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Email es <strong>requerido</strong>
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field color="accent">
@@ -32,10 +38,6 @@
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field color="accent">
-    <input matInput placeholder="Contraseña" [disabled]="contrasena()" [type]="hide ? 'password' : 'text'">
-    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-  </mat-form-field>
 </div>
 <div class="botonForm">
 <button mat-flat-button color="accent" (click)="onSubmit()">Submit</button>

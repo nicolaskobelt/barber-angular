@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Barbershop } from '../new-user/new-user.component';
 import { DataService } from '../data.service';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { FechaHoraComponent } from '../date-timePicker/fecha-hora.component';
 
 export interface TurnTypes {
   value: number;
@@ -11,6 +15,7 @@ export interface Barber {
   value: number;
   viewValue: string;
 }
+
 @Component({
   selector: 'app-new-turn',
   templateUrl: './new-turn.component.html',
@@ -20,7 +25,7 @@ export interface Barber {
 export class NewTurnComponent implements OnInit {
 
   constructor(
-    private dataService: DataService
+    private dataService: DataService,
   ) { }
 
   barbershops: Barbershop[] = [
@@ -43,16 +48,13 @@ export class NewTurnComponent implements OnInit {
   turn: any = {};
 
   ngOnInit() {
-    this.onSubmit();
   }
+
 
   onSubmit() {
     console.log(this.turn);
     this.dataService.addTurn(this.turn)
-      .subscribe(turn =>
-        this.turn.push(this.turn)
-    );
+      .subscribe(turn => {
+      });
   }
-
-
 }

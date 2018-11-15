@@ -16,6 +16,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -25,6 +28,7 @@ import { NewUserComponent } from './new-user/new-user.component';
 import { ShowUsersComponent } from './show-users/show-users.component';
 import { NewTurnComponent } from './new-turn/new-turn.component';
 import { PlanningComponent } from './planning/planning.component';
+import { FechaHoraComponent } from './date-timePicker/fecha-hora.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +39,7 @@ import { PlanningComponent } from './planning/planning.component';
     ShowUsersComponent,
     NewTurnComponent,
     PlanningComponent,
+    FechaHoraComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +63,9 @@ import { PlanningComponent } from './planning/planning.component';
     MatCardModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatAutocompleteModule,
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent],
