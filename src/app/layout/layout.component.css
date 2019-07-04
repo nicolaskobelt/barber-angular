@@ -10,3 +10,26 @@
   position: sticky;
   top: 0;
 }
+
+.footer {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
+}
+
+main > .container {
+  padding: 30px 10px 0;
+}
+
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+
+}
+
+code {
+  font-size: 80%;
+}

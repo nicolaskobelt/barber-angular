@@ -19,6 +19,15 @@ import { MatNativeDateModule } from '@angular/material';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { CalendarModule } from 'primeng/calendar';
+import { AccordionModule } from 'primeng/accordion';
+
+
 
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -29,6 +38,8 @@ import { ShowUsersComponent } from './show-users/show-users.component';
 import { NewTurnComponent } from './new-turn/new-turn.component';
 import { PlanningComponent } from './planning/planning.component';
 import { FechaHoraComponent } from './date-timePicker/fecha-hora.component';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { NewClientComponent } from './new-client/new-client.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +50,8 @@ import { FechaHoraComponent } from './date-timePicker/fecha-hora.component';
     ShowUsersComponent,
     NewTurnComponent,
     PlanningComponent,
-    FechaHoraComponent
+    FechaHoraComponent,
+    NewClientComponent
   ],
   imports: [
     BrowserModule,
@@ -65,9 +77,16 @@ import { FechaHoraComponent } from './date-timePicker/fecha-hora.component';
     MatNativeDateModule,
     MatAutocompleteModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    TooltipModule,
+    NgxMaterialTimepickerModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    CalendarModule,
+    AccordionModule,
   ],
-  providers: [],
+  providers: [AngularFirestore],
   bootstrap: [AppComponent],
 
 })

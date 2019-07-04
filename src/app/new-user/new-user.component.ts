@@ -29,7 +29,6 @@ export class NewUserComponent implements OnInit {
   hide = true;
 
   roles: Role[] = [
-    {value: 1, viewValue: 'Adiministrador'},
     {value: 2, viewValue: 'Barbero'},
     {value: 3, viewValue: 'Recepcionista'},
     {value: 4, viewValue: 'Cliente'}
@@ -51,15 +50,12 @@ export class NewUserComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.user);
     this.dataService.addUser(this.user)
       .subscribe(user => {
-      });
-    this.abrete();
-    }
-
-    abrete() {
-      this.snackBar.open('Usuario Creado!', this.user.fist_name, {
-        duration: 5000,
+        this.snackBar.open('Usuario creado!', this.user.nombre, {
+          duration: 5000,
+        }); 
       });
     }
 }

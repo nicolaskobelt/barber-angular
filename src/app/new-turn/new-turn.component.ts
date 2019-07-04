@@ -16,6 +16,11 @@ export interface Barber {
   viewValue: string;
 }
 
+export interface Clients {
+  nombre: string;
+  id: string;
+}
+
 @Component({
   selector: 'app-new-turn',
   templateUrl: './new-turn.component.html',
@@ -24,6 +29,8 @@ export interface Barber {
 
 export class NewTurnComponent implements OnInit {
 
+  myControl = new FormControl();
+filteredOptions: Observable<Clients[]>;
   constructor(
     private dataService: DataService,
   ) { }
@@ -41,13 +48,18 @@ export class NewTurnComponent implements OnInit {
 
   barbers: Barber[] = [
     {value: 2, viewValue: 'Juan'},
-    {value: 14, viewValue: 'Esteban'},
-    {value: 15, viewValue: 'Richard'}
+    {value: 3, viewValue: 'Esteban'},
+    {value: 4, viewValue: 'Richard'}
   ];
 
   turn: any = {};
+  clients: any = {};
 
   ngOnInit() {
+    this.dataService.bringClients().subscribe( res => {
+      this.clients = res;
+      console.log(this.clients);
+    });
   }
 
 

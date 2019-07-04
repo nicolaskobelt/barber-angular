@@ -24,17 +24,15 @@ export class PlanningComponent implements OnInit {
   }
 
   allTurns(): void {
-    this.dataService.getTurns()
-      .subscribe(turns => {
-        this.turns = turns;
-      });
+    this.dataService.bringTurns()
+    .subscribe(turns => {
+      this.turns = turns;
+      console.log(this.turns);
+    });
   }
 
   allUsers(): void {
-    this.dataService.getUsers()
-      .subscribe(users => {
-        this.users = users;
-      });
+   
   }
 
 }

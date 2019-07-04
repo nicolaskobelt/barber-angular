@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 const httpOptions = {
@@ -12,27 +13,51 @@ const httpOptions = {
 
 export class DataService {
 
-  private userURL = 'http://localhost:3000/api/users';
-  private turnURL = 'http://localhost:3000/api/turns';
-  private turnListURL = 'http://localhost:3000/api/turns?filter[order]=val%20ASC';
-
-  constructor(
-    private http: HttpClient
+  constructor(public afs: AngularFirestore
   ) {}
 
-  getUsers () {
-    return this.http.get(this.userURL);
+  bringTurns() {
+    return this.afs.collection('turns').valueChanges();
   }
 
-  addUser (user) {
-    return this.http.post(this.userURL, user, httpOptions);
+  addTurn(turn: object) {
+    let respuesta; 
+    this.afs.collection('turns').add(turn).then( res => {
+      console.log(res);
+      respuesta = res;
+    }).catch(err => {
+      console.log(err)
+      respuesta = err;
+    })
+    return respuesta;
   }
 
-  addTurn(turn) {
-    return this.http.post(this.turnURL, turn, httpOptions);
+  bringClients(){
+    return this.afs.collection('clientes').valueChanges();
   }
 
-  getTurns() {
-    return this.http.get(this.turnListURL);
+  addClients(client: object){
+    let ress;
+    this.afs.collection('clientes').add(client).then(res =>{
+      ress = res;
+    }).catch(err => {
+      ress = err;
+    })
+    return ress;
   }
+
+  addUser(user: object){
+    let ress;
+    this.afs.collection('users').add(user).then(res =>{
+      ress = res;
+    }).catch(err => {
+      ress = err;
+    })
+    return ress;
+  }
+
+  getUsers(){
+    return this.afs.collection('users').valueChanges();
+  }
+
 }

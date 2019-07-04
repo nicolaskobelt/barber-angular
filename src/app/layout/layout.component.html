@@ -21,10 +21,16 @@
         Clientes
       </a>
       <a mat-list-item
-         routerLink="/newuser"
+         routerLink="/newclient"
          (click)="drawer.toggle()">
         <mat-icon>person_add</mat-icon>
         Nuevo Cliente
+      </a>
+      <a mat-list-item
+         routerLink="/newuser"
+         (click)="drawer.toggle()">
+        <mat-icon>supervised_user_circle</mat-icon>
+        Nuevo Usuario
       </a>
       <a mat-list-item href="/profile/:id">
         <mat-icon>mood</mat-icon>
@@ -46,6 +52,10 @@
     </mat-toolbar>
     <router-outlet></router-outlet>
     <!-- Add Content Here -->
+
+    <footer class="footer mt-auto py-1">
+      <p>El Chiringuito desarrollos</p>
+    </footer>
   </mat-sidenav-content>
 </mat-sidenav-container>
 

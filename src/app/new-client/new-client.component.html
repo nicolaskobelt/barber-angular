@@ -8,7 +8,8 @@
   </mat-form-field>
 
   <mat-form-field color="accent">
-    <input matInput type="password" placeholder="Contrasena" [(ngModel)]="user.pass" required>
+    <span matPrefix>+54 &nbsp;</span>
+    <input type="tel" matInput placeholder="Telefono"[(ngModel)]="user.telefono" required>
   </mat-form-field>
 
   <mat-form-field color="accent">
@@ -19,27 +20,6 @@
     <mat-error *ngIf="emailFormControl.hasError('required')">
       Email es <strong>requerido</strong>
     </mat-error>
-  </mat-form-field>
-
-  <mat-form-field color="accent">
-    <span matPrefix>+54 &nbsp;</span>
-    <input type="tel" matInput placeholder="Telefono"[(ngModel)]="user.telefono" required>
-  </mat-form-field>
-
-  <mat-form-field color="accent">
-    <mat-select placeholder="Cargo" [(ngModel)]="user.rol" required>
-      <mat-option *ngFor="let role of roles" [value]="role.viewValue">
-        {{role.viewValue}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field color="accent">
-    <mat-select placeholder="Barberia" [(ngModel)]="user.barber_id" required>
-      <mat-option *ngFor="let barbershop of barbershops" [value]="barbershop.viewValue">
-        {{barbershop.viewValue}}
-      </mat-option>
-    </mat-select>
   </mat-form-field>
 
 </div>

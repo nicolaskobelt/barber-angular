@@ -24,6 +24,7 @@ export class ShowUsersComponent implements OnInit {
     this.dataService.getUsers()
       .subscribe(users => {
         this.users = users;
+        console.log(this.users);
       });
   }
 }
