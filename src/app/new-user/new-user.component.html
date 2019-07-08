@@ -1,4 +1,4 @@
-<div class="formNewUser">
+<div mat-dialog-content class="formNewUser">
   <mat-form-field color="accent">
     <input matInput placeholder="Nombre" [(ngModel)]="user.nombre" required>
   </mat-form-field>
@@ -22,7 +22,6 @@
   </mat-form-field>
 
   <mat-form-field color="accent">
-    <span matPrefix>+54 &nbsp;</span>
     <input type="tel" matInput placeholder="Telefono"[(ngModel)]="user.telefono" required>
   </mat-form-field>
 
@@ -43,6 +42,6 @@
   </mat-form-field>
 
 </div>
-<div class="botonForm">
-<button mat-flat-button color="accent" (click)="onSubmit()">Crear</button>
+<div mat-dialog-action class="botonForm">
+<button mat-flat-button color="accent" (click)="onSubmit()" mat-dialog-close>Crear</button>
 </div>

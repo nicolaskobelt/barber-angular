@@ -94,7 +94,7 @@ import { DialogClientComponent } from './dialog-client/dialog-client.component';
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent],
-  entryComponents: [DialogUserComponent, DialogClientComponent, NewClientComponent]
+  entryComponents: [DialogUserComponent, DialogClientComponent, NewClientComponent, NewUserComponent]
 
 })
 export class AppModule { }

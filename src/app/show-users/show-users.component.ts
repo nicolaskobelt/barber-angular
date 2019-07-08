@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { DialogUserComponent } from '../dialog-user/dialog-user.component';
-import { forEach } from '@angular/router/src/utils/collection';
+import { NewUserComponent } from '../new-user/new-user.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class ShowUsersComponent implements OnInit {
 
   constructor(
     private dataService: DataService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router,
   ) {}
 
   users: any = [];
@@ -39,6 +41,15 @@ export class ShowUsersComponent implements OnInit {
       });
   }
 
+  newUserDialog() {
+    const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = false;
+        dialogConfig.autoFocus = true;
+
+        this.dialog.open(NewUserComponent, dialogConfig);
+  }
+
   openDialog(id) {
     const dialogConfig = new MatDialogConfig();
 
@@ -48,5 +59,9 @@ export class ShowUsersComponent implements OnInit {
         dialogConfig.data = {id}
 
         this.dialog.open(DialogUserComponent, dialogConfig);
+  }
+
+  deleteUser(id) {
+    this.dataService.deleteUser(id);
   }
 }

@@ -28,9 +28,6 @@ export interface Clients {
 })
 
 export class NewTurnComponent implements OnInit {
-
-  myControl = new FormControl();
-filteredOptions: Observable<Clients[]>;
   constructor(
     private dataService: DataService,
   ) { }
@@ -54,12 +51,20 @@ filteredOptions: Observable<Clients[]>;
 
   turn: any = {};
   clients: any = {};
+  cli: object = {};
 
   ngOnInit() {
-    this.dataService.getClients().subscribe( res => {
-      this.clients = res;
-      console.log(this.clients);
-    });
+    this.dataService.getClients()
+      .subscribe(clients => {
+        let count = 0; 
+        clients.forEach(doc => {
+          let tmp; 
+          tmp = doc.data();
+          tmp.id = doc.id;
+          this.clients[count] = tmp;
+          count ++;
+        })
+      });
   }
 
 

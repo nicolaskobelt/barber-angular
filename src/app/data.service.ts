@@ -72,6 +72,11 @@ export class DataService {
     return ress;
   }
 
+  deleteUser(id: string){
+    console.log(id);
+    this.afs.collection('users').doc(id).delete();
+  }
+
   getUsers(){
     return this.afs.collection('users').get();
   }

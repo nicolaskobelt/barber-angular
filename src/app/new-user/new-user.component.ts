@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { DataService } from '../data.service';
 import { MatSnackBar } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 
 
 export interface Role {
@@ -24,6 +25,7 @@ export class NewUserComponent implements OnInit {
   constructor(
     public snackBar: MatSnackBar,
     private dataService: DataService,
+    private dialogRef: MatDialogRef<NewUserComponent>,
   ) { }
 
   hide = true;

@@ -1,24 +1,19 @@
 <div class="newTurnForm">
 
   <mat-form-field color="accent">
-    <input matInput>
-    <p-calendar [(ngModel)]="turn.value" showTime="true" hourFormat="24"></p-calendar>
-    <!--<input matInput [matDatepicker]="picker" placeholder="Elegir fecha" [(ngModel)]="turn.date">-->
+    <input matInput [matDatepicker]="dp3" placeholder="Elegir fecha" [(ngModel)]="turn.date" disabled>
+      <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+        <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+    <!--<input matInput [matDatepicker]="picker" placeholder="Elegir fecha" >-->
     <!--<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
     <!--<mat-datepicker #picker></mat-datepicker>-->
   </mat-form-field>
-
-  <!--<mat-form-field color="accent">-->
-    <!--<input matInput placeholder="Elegir horario" aria-label="24hr format"-->
-           <!--[ngxTimepicker]="fullTime" [format]="24" readonly [(ngModel)]="turn.time">-->
-    <!--<ngx-material-timepicker [ngxMaterialTimepickerTheme]="darkTheme" #fullTime></ngx-material-timepicker>-->
-  <!--</mat-form-field>-->
 
   <mat-form-field color="accent">
     <mat-select placeholder="Barberia" [(ngModel)]="turn.barber_id" required>
       <mat-option *ngFor="let barbershop of barbershops" [value]="barbershop.value">
         {{barbershop.viewValue}}
-      </mat-option>
+      </mat-option> 
     </mat-select>
   </mat-form-field>
 
@@ -40,12 +35,7 @@
   </mat-form-field>
 
   <mat-form-field color="accent">
-    <input type="text" placeholder="Nombre" aria-label="Assignee" matInput [formControl]="myControl" [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-        {{option.name}}
-      </mat-option>
-    </mat-autocomplete>
+    <input type="text" matInput placeholder="Nombre y Apellido" [(ngModel)]="turn.cliente" required >
   </mat-form-field>
 
 </div>
