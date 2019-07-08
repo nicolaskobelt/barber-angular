@@ -40,6 +40,9 @@ import { PlanningComponent } from './planning/planning.component';
 import { FechaHoraComponent } from './date-timePicker/fecha-hora.component';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { NewClientComponent } from './new-client/new-client.component';
+import { ClientsComponent } from './clients/clients.component';
+import { DialogUserComponent } from './dialog-user/dialog-user.component';
+import { DialogClientComponent } from './dialog-client/dialog-client.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,10 @@ import { NewClientComponent } from './new-client/new-client.component';
     NewTurnComponent,
     PlanningComponent,
     FechaHoraComponent,
-    NewClientComponent
+    NewClientComponent,
+    ClientsComponent,
+    DialogUserComponent,
+    DialogClientComponent
   ],
   imports: [
     BrowserModule,
@@ -88,6 +94,7 @@ import { NewClientComponent } from './new-client/new-client.component';
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent],
+  entryComponents: [DialogUserComponent, DialogClientComponent, NewClientComponent]
 
 })
 export class AppModule { }

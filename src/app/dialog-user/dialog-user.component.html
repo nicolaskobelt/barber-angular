@@ -8,10 +8,6 @@
   </mat-form-field>
 
   <mat-form-field color="accent">
-    <input type="tel" matInput placeholder="Telefono"[(ngModel)]="user.telefono" required>
-  </mat-form-field>
-
-  <mat-form-field color="accent">
     <input matInput placeholder="Email" [formControl]="emailFormControl" [(ngModel)]="user.email">
     <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
       Por favor, un mail como la gente
@@ -21,7 +17,12 @@
     </mat-error>
   </mat-form-field>
 
+  <mat-form-field color="accent">
+    <input type="tel" matInput placeholder="Telefono" [(ngModel)]="user.telefono" required>
+  </mat-form-field>
+
 </div>
-<div mat-dialog-actions class="botonForm">
-<button mat-flat-button mat-dialog-close color="accent" (click)="onSubmit()">Crear</button>
+<div mat-dialog-actions aling="end">
+    <button mat-flat-button color="warn">Cancelar</button>
+    <button mat-flat-button color="accent">Modificar</button>
 </div>

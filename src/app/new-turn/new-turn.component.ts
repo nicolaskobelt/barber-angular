@@ -56,7 +56,7 @@ filteredOptions: Observable<Clients[]>;
   clients: any = {};
 
   ngOnInit() {
-    this.dataService.bringClients().subscribe( res => {
+    this.dataService.getClients().subscribe( res => {
       this.clients = res;
       console.log(this.clients);
     });

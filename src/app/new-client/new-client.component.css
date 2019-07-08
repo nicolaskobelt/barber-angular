@@ -1,15 +1,4 @@
 .formNewUser {
-    display: flex;
-    flex-direction: column;
-    padding: 7%;
+  width: 270px;
+  padding: center;
   }
-  
-  .formNewUser > * {
-    width: 100%;
-  }
-  
-  .botonForm{
-    text-align: center;
-    bottom: 10px;
-  }
-  

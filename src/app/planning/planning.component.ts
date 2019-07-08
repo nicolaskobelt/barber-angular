@@ -17,10 +17,18 @@ export class PlanningComponent implements OnInit {
   turns: Object;
   users: Object;
   Turno: Object;
+  date;
 
   ngOnInit() {
+    this.date = new Date().toLocaleDateString()
+    // const today = new Date();
+    // const dd = String(today.getDate()).padStart(2, '0');
+    // const mm = String(today.getMonth() + 1).padStart(2, '0');
+    // var yyyy = today.getFullYear();
+    // this.date = dd + '/' + mm + '/' + yyyy ;
     this.allTurns();
     this.allUsers();
+
   }
 
   allTurns(): void {
@@ -29,6 +37,8 @@ export class PlanningComponent implements OnInit {
       this.turns = turns;
       console.log(this.turns);
     });
+
+    console.log(this.date);
   }
 
   allUsers(): void {

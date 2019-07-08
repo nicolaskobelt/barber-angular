@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { FormControl, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 import { MatSnackBar } from '@angular/material';
 
 @Component({
@@ -12,7 +13,8 @@ export class NewClientComponent implements OnInit {
 
   constructor(
     public dataService: DataService,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private dialogRef: MatDialogRef<NewClientComponent>,
     ) { }
 
   ngOnInit() {
@@ -26,9 +28,10 @@ export class NewClientComponent implements OnInit {
   ]);
 
   onSubmit() {
-    this.user.rol = 'cliente'
-    console.log(this.user);
-    this.dataService.addUser(this.user)
+    if(this.user.email == undefined){
+      this.user.mail = ''
+    };
+    this.dataService.addClients(this.user)
       .subscribe(res => {
         this.snackBar.open('Cliente creado!', this.user.nombre, {
           duration: 5000,

@@ -2,8 +2,9 @@
 @include mat-core();
 
 $barber-app-primary: mat-palette($mat-grey, 900);
-$barber-app-accent: mat-palette($mat-green, A400);
-$barber-app-warn: mat-palette($mat-red, 700);
+$barber-app-accent: mat-palette($mat-teal, 300);
+$barber-app-warn: mat-palette($mat-red, 900);
+$barber-app-background: mat-palette($mat-grey, 900);
 
 $barber-theme: mat-dark-theme($barber-app-primary, $barber-app-accent, $barber-app-warn);
 
