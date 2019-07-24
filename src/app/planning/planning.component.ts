@@ -18,6 +18,8 @@ export class PlanningComponent implements OnInit {
   users: Object;
   Turno: Object;
   date;
+  fecha = '2019-07-20'
+  turnos;
 
   ngOnInit() {
     this.date = new Date().toLocaleDateString()
@@ -32,13 +34,10 @@ export class PlanningComponent implements OnInit {
   }
 
   allTurns(): void {
-    this.dataService.bringTurns()
-    .subscribe(turns => {
+    let counter = 0;
+    this.dataService.bringTurns().subscribe(turns => {
       this.turns = turns;
-      console.log(this.turns);
     });
-
-    console.log(this.date);
   }
 
   allUsers(): void {

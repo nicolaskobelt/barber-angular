@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Barbershop } from '../new-user/new-user.component';
 import { DataService } from '../data.service';
 import { FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { FechaHoraComponent } from '../date-timePicker/fecha-hora.component';
 
 export interface TurnTypes {
   value: number;
@@ -28,8 +28,13 @@ export interface Clients {
 })
 
 export class NewTurnComponent implements OnInit {
+
+  date = new FormControl(new Date());
+  serializedDate = new FormControl((new Date()).toISOString());
+
   constructor(
     private dataService: DataService,
+    private snackBar: MatSnackBar,
   ) { }
 
   barbershops: Barbershop[] = [
@@ -69,9 +74,14 @@ export class NewTurnComponent implements OnInit {
 
 
   onSubmit() {
+    this.turn.date = this.turn.date.toISOString();
+    this.turn.date = this.turn.date.slice(0,10)
     console.log(this.turn);
     this.dataService.addTurn(this.turn)
       .subscribe(turn => {
-      });
+        this.snackBar.open('Turno agendado!', turn.cliente, {
+          duration: 5000,
+        });
+    });
   }
 }

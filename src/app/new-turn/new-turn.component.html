@@ -1,7 +1,9 @@
 <div class="newTurnForm">
 
   <mat-form-field color="accent">
-    <input matInput [matDatepicker]="dp3" placeholder="Elegir fecha" [(ngModel)]="turn.date" disabled>
+    <input matInput [matDatepicker]="dp3" placeholder="Elegir fecha" 
+    [(ngModel)]="turn.date" 
+    [formControl]="serializedDate">
       <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
         <mat-datepicker #dp3 disabled="false"></mat-datepicker>
     <!--<input matInput [matDatepicker]="picker" placeholder="Elegir fecha" >-->
@@ -28,7 +30,7 @@
 
   <mat-form-field color="accent">
     <mat-select placeholder="Barbero" [(ngModel)]="turn.barbero_id" required>
-      <mat-option *ngFor="let barber of barbers" [value]="barber.value">
+      <mat-option *ngFor="let barber of barbers" [value]="barber.viewValue">
         {{barber.viewValue}}
       </mat-option>
     </mat-select>

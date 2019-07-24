@@ -17,8 +17,9 @@ export class DataService {
   ) {}
 
   bringTurns() {
-    return this.afs.collection('turns').valueChanges();
+    return this.afs.collection('turns', res => res.orderBy('hora')).valueChanges();
   }
+
 
   bringTurnsByDate(fecha: string){
     return this.afs.collection('turns', res => res.where('fecha', '==', fecha)).valueChanges();

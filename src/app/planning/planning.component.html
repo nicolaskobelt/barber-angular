@@ -1,9 +1,17 @@
 <div>
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Elegi Fecha" [(ngModel)]="fecha">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+
+<div>
   <mat-card class="example-card" *ngFor="let turns of turns">
     <mat-card-header>
-      <mat-card-title class="headerstilo">{{turns.nombre}} {{turns.apellido}} </mat-card-title>
-      <mat-card-subtitle>{{turns.barbero}}</mat-card-subtitle>
+      <mat-card-title class="headerstilo">{{turns.cliente}}</mat-card-title>
+      <mat-card-subtitle>{{turns.barber_id}}</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content>{{turns.fecha.toDate()}}</mat-card-content>
+    <mat-card-content>{{turns.date}}</mat-card-content>
   </mat-card>
 </div>
