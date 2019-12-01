@@ -54,10 +54,8 @@ export class NewUserComponent implements OnInit {
   onSubmit() {
     console.log(this.user);
     this.dataService.addUser(this.user)
-      .subscribe(user => {
         this.snackBar.open('Usuario creado!', this.user.nombre, {
           duration: 5000,
-        }); 
       });
     }
 }

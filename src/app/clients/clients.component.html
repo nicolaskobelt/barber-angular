@@ -1,14 +1,13 @@
-<div class="contButton"> 
-    <button class="button" mat-fab (click)="openNewCli()" color="accent">
-      <mat-icon>add</mat-icon>
-      </button>
-</div>
 <div>
-    <mat-nav-list>
-        <mat-list-item *ngFor="let clients of clients">
-           <button mat-icon-button (click)="openDialog(clients.id)">
-              {{clients.nombre}} {{clients.apellido}}
-           </button>
-        </mat-list-item>
-      </mat-nav-list>
+   <mat-nav-list>
+      <mat-list-item *ngFor="let clients of clients">
+         <button mat-icon-button (click)="openDialog(clients.id)">
+            {{clients.nombre}} {{clients.apellido}}
+         </button>
+      </mat-list-item>
+   </mat-nav-list>
+
+   <button class="button" mat-fab (click)="openNewCli()" color="accent">
+      <mat-icon>add</mat-icon>
+   </button>
 </div>

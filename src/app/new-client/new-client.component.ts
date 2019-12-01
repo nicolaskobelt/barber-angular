@@ -32,10 +32,8 @@ export class NewClientComponent implements OnInit {
       this.user.mail = ''
     };
     this.dataService.addClients(this.user)
-      .subscribe(res => {
         this.snackBar.open('Cliente creado!', this.user.nombre, {
           duration: 5000,
-        });
       });
     }
 

@@ -1,17 +1,25 @@
-<div>
-  <mat-form-field>
+<div class="fecha">
+  <mat-form-field color="accent">
     <input matInput [matDatepicker]="picker" placeholder="Elegi Fecha" [(ngModel)]="fecha">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
+  <button mat-icon-button color="accent" (click)="buscar()">
+      <mat-icon>search</mat-icon>
+    </button>
 </div>
 
-<div>
+<div class="long">
   <mat-card class="example-card" *ngFor="let turns of turns">
     <mat-card-header>
-      <mat-card-title class="headerstilo">{{turns.cliente}}</mat-card-title>
-      <mat-card-subtitle>{{turns.barber_id}}</mat-card-subtitle>
+      <mat-card-title class="headerstilo">
+        <mat-icon>perm_identity</mat-icon>
+        {{turns.cliente}}</mat-card-title>
+      <mat-card-subtitle>
+        <mat-icon>alarm</mat-icon>
+        {{turns.hour}}
+      </mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content>{{turns.date}}</mat-card-content>
+    <mat-card-content>{{turns.barbero}}</mat-card-content>
   </mat-card>
 </div>

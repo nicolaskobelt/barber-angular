@@ -1,18 +1,18 @@
-<div class="newTurnForm">
+<div class="newTurnForm" [formGroup]="newTurn">
+
 
   <mat-form-field color="accent">
-    <input matInput [matDatepicker]="dp3" placeholder="Elegir fecha" 
-    [(ngModel)]="turn.date" 
-    [formControl]="serializedDate">
-      <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
-        <mat-datepicker #dp3 disabled="false"></mat-datepicker>
-    <!--<input matInput [matDatepicker]="picker" placeholder="Elegir fecha" >-->
-    <!--<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
-    <!--<mat-datepicker #picker></mat-datepicker>-->
+    <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Dia">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="time" atp-time-picker placeholder="Hora" theme="dark" matInput formControlName="hour" required>
   </mat-form-field>
 
   <mat-form-field color="accent">
-    <mat-select placeholder="Barberia" [(ngModel)]="turn.barber_id" required>
+    <mat-select placeholder="Barberia" formControlName="barber_id" required>
       <mat-option *ngFor="let barbershop of barbershops" [value]="barbershop.value">
         {{barbershop.viewValue}}
       </mat-option> 
@@ -20,7 +20,7 @@
   </mat-form-field>
 
   <mat-form-field color="accent">
-    <mat-select placeholder="Tipo de corte" [(ngModel)]="turn.turn_type_id" required>
+    <mat-select placeholder="Tipo de corte" formControlName="turn_type" required>
       <mat-option *ngFor="let turn_type of turn_types" [value]="turn_type.value">
         {{turn_type.viewValue}}
       </mat-option>
@@ -29,19 +29,24 @@
 
 
   <mat-form-field color="accent">
-    <mat-select placeholder="Barbero" [(ngModel)]="turn.barbero_id" required>
-      <mat-option *ngFor="let barber of barbers" [value]="barber.viewValue">
-        {{barber.viewValue}}
+    <mat-select placeholder="Barbero" formControlName="barbero_id" required>
+      <mat-option *ngFor="let barber of barbers" [value]="barber.id">
+        {{barber.nombre}} {{barber.apellido}}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field color="accent">
-    <input type="text" matInput placeholder="Nombre y Apellido" [(ngModel)]="turn.cliente" required >
+    <mat-select placeholder="Cliente" formControlName="cliente_id" required>
+      <mat-option *ngFor="let client of clients" [value]="client.id">
+        {{client.nombre}} {{client.apellido}}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
 
-</div>
+
 <div class="botonForm">
   <button mat-flat-button color="accent" (click)="onSubmit()">Reservar</button>
 </div>
 
+</div>

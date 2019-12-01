@@ -1,5 +1,6 @@
 .example-card {
-  max-width: 400px;
+  max-width: 100%;
+  align-content: center;
 }
 .headerstilo{
   font-size: larger;
@@ -9,3 +10,10 @@
   align-content: right;
 }
 
+.fecha{
+  padding: 5%;
+}
+
+.long{
+  min-height: 100vh;
+}

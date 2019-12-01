@@ -14,40 +14,38 @@ const httpOptions = {
 export class DataService {
 
   constructor(public afs: AngularFirestore
-  ) {}
+  ) { }
 
   bringTurns() {
     return this.afs.collection('turns', res => res.orderBy('hora')).valueChanges();
   }
 
 
-  bringTurnsByDate(fecha: string){
-    return this.afs.collection('turns', res => res.where('fecha', '==', fecha)).valueChanges();
+  bringTurnsByDate(fecha: string) {
+    return this.afs.collection('turns', res => res.where('date', '==', fecha).orderBy('hour')).valueChanges();
   }
 
   addTurn(turn: object) {
-    let respuesta; 
-    this.afs.collection('turns').add(turn).then( res => {
-      console.log(res);
-      respuesta = res;
-    }).catch(err => {
-      console.log(err)
-      respuesta = err;
+    return new Promise((resolve, reject) => {
+      this.afs.collection('turns').add(turn).then(res => {
+        resolve(res);
+      }).catch(err => {
+        reject(err);
+      })
     })
-    return respuesta;
   }
 
-  getClients(){
-    return this.afs.collection('clientes').get();
+  getClients() {
+    return this.afs.collection('clientes', res => res.orderBy('nombre')).get();
   }
 
-  getClientById(id: string){
+  getClientById(id: string) {
     return this.afs.collection('clientes').doc(id).valueChanges();
   }
 
-  addClients(client: object){
+  addClients(client: object) {
     let ress;
-    this.afs.collection('clientes').add(client).then(res =>{
+    this.afs.collection('clientes').add(client).then(res => {
       ress = res;
     }).catch(err => {
       ress = err;
@@ -55,15 +53,15 @@ export class DataService {
     return ress;
   }
 
-  updateClient(id: string, datos: object){
+  updateClient(id: string, datos: object) {
     console.log('log data service', id, datos);
     this.afs.collection('clientes').doc(id).update(datos);
   }
 
-  addUser(user: object){
+  addUser(user: object) {
     console.log(user)
     let ress;
-    this.afs.collection('users').add(user).then(res =>{
+    this.afs.collection('users').add(user).then(res => {
       console.log(res);
       ress = res;
     }).catch(err => {
@@ -73,16 +71,16 @@ export class DataService {
     return ress;
   }
 
-  deleteUser(id: string){
+  deleteUser(id: string) {
     console.log(id);
     this.afs.collection('users').doc(id).delete();
   }
 
-  getUsers(){
+  getUsers() {
     return this.afs.collection('users').get();
   }
 
-  getUserById(id: string){
+  getUserById(id: string) {
     return this.afs.collection('users').doc(id).valueChanges();
   }
 

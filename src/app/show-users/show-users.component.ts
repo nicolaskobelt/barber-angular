@@ -55,6 +55,7 @@ export class ShowUsersComponent implements OnInit {
 
         dialogConfig.disableClose = false;
         dialogConfig.autoFocus = true;
+        dialogConfig.width = "400";
 
         dialogConfig.data = {id}
 

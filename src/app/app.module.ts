@@ -24,8 +24,7 @@ import { AngularFireModule } from '@angular/fire';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
-import { CalendarModule } from 'primeng/calendar';
-import { AccordionModule } from 'primeng/accordion';
+import { AmazingTimePickerModule } from 'amazing-time-picker'
 
 
 
@@ -43,6 +42,8 @@ import { NewClientComponent } from './new-client/new-client.component';
 import { ClientsComponent } from './clients/clients.component';
 import { DialogUserComponent } from './dialog-user/dialog-user.component';
 import { DialogClientComponent } from './dialog-client/dialog-client.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { DialogClientComponent } from './dialog-client/dialog-client.component';
     DialogClientComponent
   ],
   imports: [
+    AmazingTimePickerModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -84,13 +86,14 @@ import { DialogClientComponent } from './dialog-client/dialog-client.component';
     MatAutocompleteModule,
     MatSnackBarModule,
     MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     TooltipModule,
     NgxMaterialTimepickerModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
-    CalendarModule,
-    AccordionModule,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent],
